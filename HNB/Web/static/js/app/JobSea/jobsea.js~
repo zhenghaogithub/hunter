@@ -1,0 +1,42 @@
+(function () {
+    'use strict';
+    var controllerId = 'jobsea';
+    angular.module('app')
+        .controller(controllerId,
+            ['common', 'datacontext', jobsea]);
+
+    function jobsea(common, datacontext) {
+        var getLogFn = common.logger.getLogFn;
+        var log = getLogFn(controllerId);
+
+        var vm = this;
+        vm.jobsea = [];
+        vm.maa = [];
+        vm.title = 'JobSea';
+
+        activate();
+
+        function activate() {
+            var promises = [getjobseaCast(), getMAA()];
+            common.activateController(promises, controllerId)
+                .then(function () {
+                    log('Activated jobsea View');
+                });
+        }
+
+        function getMAA() {
+            return datacontext.getMAA().then(function (data) {
+//                vm.maa = data.data[0].data.results;
+                vm.maa = data;
+                return vm.maa;
+            });
+        }
+
+        function getJobSeaCast() {
+            return datacontext.getJobSeaCast().then(function (data) {
+                vm.jobsea = data;
+                return vm.jobsea;
+            });
+        }
+    }
+})();

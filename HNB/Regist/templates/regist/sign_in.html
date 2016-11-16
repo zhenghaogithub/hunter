@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid bg-grey">
+<div class="redirect text-center">
+	<h5>如果您还没有帐号， 请您 <a href="/regist/signup/">注册</a> </h5>
+</div>
+</div>
+<div class="container-fluid text-center">
+<form method="post">
+	{% csrf_token %}
+	{{form.non_field_errors}}
+	<br>
+<!--
+	<div class="fieldWrapper">
+		{{form.email.errors}}
+		<label for="form.email.id_for_label">注册邮箱 : </label>
+		{{form.email}}
+	</div>
+-->
+	<div class="fieldWrapper">
+		{{form.username.errors}}
+		<label for="form.username.id_for_label">用户名 &nbsp;&nbsp; : &nbsp; </label>
+		{{form.username}}		
+	</div>
+	
+	<div class="fieldWrapper">
+		{{form.password.errors}}
+		<br><label for="form.password.id_for_label">登录密码 : &nbsp;</label>
+		{{form.password}}
+	</div>
+	<br>
+	<input type="submit" value="登录" class="btn btn-primary"/>
+</form>
+</div>
+{% endblock %}

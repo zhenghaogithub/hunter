@@ -1,0 +1,313 @@
+
+<!-- saved from url=(0053)http://hunter.hijobs.cn//dist/partials/dashboard.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf8"><style>
+.color_span span {
+    color: red;
+}
+</style>
+</head><body><section class="content-header">
+    <h1>
+          我的猎头数据
+          <small style="font-size: 14px">上次登录时间 {{profile.updated_at}}</small>
+        </h1>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Info boxes -->
+    <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon">
+                <i class="fa fa-book"></i>
+              </span>
+                <div class="info-box-content">
+                    <span class="info-box-text">接单职位</span>
+                    <span class="info-box-number">{{ status.orderCount }}</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon">
+                <i class="fa fa-share"></i>
+              </span>
+                <div class="info-box-content">
+                    <span class="info-box-text">推荐人选</span>
+                    <span class="info-box-number">{{ status.recommendCount }}</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <!-- fix for small devices only -->
+        <div class="clearfix visible-sm-block"></div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon">
+                <i class="fa fa-jpy"></i>
+              </span>
+                <div class="info-box-content">
+                    <span class="info-box-text">预计收入</span>
+                    <span class="info-box-number">{{ status.income }}</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon">
+                <i class="fa fa-gavel"></i>
+              </span>
+                <div class="info-box-content">
+                    <span class="info-box-text">成功入职</span>
+                    <span class="info-box-number">{{ status.recommendSuccessCount }}</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- Main row -->
+    <div class="row">
+        <!-- Left col -->
+        <div class="col-md-9">
+<!--             <div class="box">
+                <div class="box-header with-border" style="background-color:#39a1e8;">
+                    <h3 class="box-title" style="color:white;border-left-color:white;">9月活动</h3>
+                </div>
+                <div class="box-body" style="display: block;">
+                    活动主题：创建团队，不推荐也能得佣金！
+                    <br>
+                    参与方式：
+                    <br>
+                    第一步：点击左侧“我的团队”，将邀请链接分享到hr群或好友，邀请加入；
+                    <br>
+                    第二步：团队成员每成功推荐一个人候选人，你均可获得佣金的5%；
+                    <br>
+                    注：通过你的邀请链接注册的均为你的团队成员。
+                </div>
+            </div> -->
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">10月活动-推荐猎头客户
+                    </h3>
+                </div>
+                <div class="box-body">
+                    <p>提供猎头业务信息，招手与其签订合同后，该公司的猎头职位每完成一个，您都将获得佣金的10%。</p>
+                    <!-- 跟树军或Steven确认一下最终是不是30% -->
+                    <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#recommendHunterModal" style="line-height:30px;width:120px;font-size:14px;margin-top:5px;"><i class="fa fa-plus"></i> 立即推荐</button>
+                </div>
+            </div>
+            <!-- TABLE: LATEST ORDERS -->
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">正在进行中的职位</h3>
+                    <!--<div class="box-tools pull-right">-->
+                    <!--<button class="btn btn-box-tool" data-widget="collapse">-->
+                    <!--<i class="fa fa-minus"></i>-->
+                    <!--</button>-->
+                    <!--<button class="btn btn-box-tool" data-widget="remove">-->
+                    <!--<i class="fa fa-times"></i>-->
+                    <!--</button>-->
+                    <!--</div>-->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                                <tr>
+                                    <th>职位 ID</th>
+                                    <th>职位名称</th>
+                                    <!--<th>当前状态</th>-->
+                                    <th>最新动态</th>
+                                    <th>时间</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="job in myOrders.items">
+                                    <td>
+                                        <a href="javascript:;" ui-sref="orders.detail({jobid:job.id})">{{ job.id }}</a>
+                                    </td>
+                                    <td><a href="javascript:;" ui-sref="orders.detail({jobid:job.id})">{{ job.name }}</a></td>
+                                    <!--<td>-->
+                                    <!--<span class="label label-success">人选已入职</span>-->
+                                    <!--</td>-->
+                                    <td>
+                                        <div class="sparkbar" data-color="#00a65a" data-height="20" ng-if="job.last_record">
+                                            <span ng-if="job.last_record.status==2||job.last_record.status==3">招手招聘正在审�&nbsp;�</span>
+                                            <span ng-if="job.last_record.status==4">招手招聘已审�&nbsp;�，简历已发给企业</span>
+                                            <span ng-if="job.last_record.status!=2&amp;&amp;job.last_record.status!=3&amp;&amp;job.last_record.status!=4">{{ job.last_record.msg }}</span>
+                                        </div>
+                                        <div class="sparkbar" data-color="#00a65a" data-height="20" ng-if="!job.last_record">
+                                            已接单
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="sparkbar" data-color="#00a65a" data-height="20" ng-if="job.last_record">
+                                            <small class="text-muted pull-left"><i class="fa fa-clock-o"></i>
+                                            {{ job.last_record.updated_at }}</small></div>
+                                        <div class="sparkbar" data-color="#00a65a" data-height="20" ng-if="!job.last_record">
+                                            <small class="text-muted pull-left"><i class="fa fa-clock-o"></i>
+                                            暂�&nbsp;</small>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- 当列表为空的时候 -->
+                        <div class="callout" ng-if="myOrders.total==0" style="background-color: #ecf0f5;">
+                            <span class="info-box-icon" style="background-color: #ecf0f5;color:#3c8dbc "><i class="fa fa-info-circle"></i></span>
+                            <h4 style="color: #3c8dbc">请到<a href="javascript:;" ui-sref="jobsea.list" style="color: #3c8dbc">职位公海</a>选择适合的职位接单并进行推荐；</h4>
+                            <p style="color: #3c8dbc">第一步：挑选职位接单；</p>
+                            <p style="color: #3c8dbc">第二步：选择匹配的简历进行推荐；</p>
+                            <p style="color: #3c8dbc">推荐成功即可获得30%高额佣金，如需帮助请联系专属顾问。</p>
+                        </div>
+                        <!-- /.当列表为空的时候 -->
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3">
+            <!-- Info Boxes Style 2 -->
+            <!-- PRODUCT LIST -->
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">最新动态</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <ul class="products-list product-list-in-box hunter-feeds">
+                        <li class="hunter-feed" ng-repeat="action in status.actions"><span class="color_span" ng-bind-html="action.details"></span><small class="time">{{action.created_at | date:'MM-dd'}}</small></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3">
+            <!-- Widget: user widget style 1 -->
+            <div class="box box-widget widget-user">
+            <a href="http://www.hijobs.cn/company-new" target="_blank"><img src="./dashboard_files/ad.png" style="width:100%;"></a>
+
+            </div>
+            <!-- /.widget-user -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+<!-- 推荐窗口 -->
+<div class="modal fade" id="recommendHunterModal" recommendhuntermodal="">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">推荐</h4>
+            </div>
+            <div class="modal-body">
+                <div class="box-body">
+                    <form class="form-horizontal" name="formvalidatehunter" ng-submit="submit()" novalidate="">
+                        <div class="box-body">
+                            <label for="company" class="col-md-3 control-label" style="padding-right:0;">企业名称：</label>
+                            <div class="form-group" ng-class="{&#39;has-success&#39;:formvalidatehunter.company.$valid,&#39;has-error&#39;:formvalidatehunter.company.$dirty&amp;&amp;formvalidatehunter.company.$invalid}">
+                                <div class="col-md-8">
+                                    <label class="control-label" ng-show="formvalidatehunter.company.$dirty&amp;&amp;formvalidatehunter.company.$error.required">
+                                        <i class="fa fa-bell-o"></i>企业名称不能为空。</label>
+                                    <input type="text" name="company" ng-model="form.company_name" required="" class="form-control" id="company" placeholder="请输入企业名称 ...">
+                                </div>
+                            </div>
+                            <label for="realname" class="col-md-3 control-label" style="padding-right:0;">联系人姓名：</label>
+                            <div class="form-group" ng-class="{&#39;has-success&#39;:formvalidatehunter.realname.$valid,&#39;has-error&#39;:formvalidatehunter.realname.$dirty&amp;&amp;formvalidatehunter.realname.$invalid}">
+                                <div class="col-md-8">
+                                    <label class="control-label" ng-show="formvalidatehunter.realname.$dirty&amp;&amp;formvalidatehunter.realname.$error.required">
+                                        <i class="fa fa-bell-o"></i>姓名不能为空。</label>
+                                    <input type="text" name="realname" ng-model="form.contact_name" required="" class="form-control" id="realname" placeholder="请输入姓名 ...">
+                                </div>
+                            </div>
+                            <label for="position" class="col-md-3 control-label" style="padding-right:0;">联系人职位：</label>
+                            <div class="form-group" ng-class="{&#39;has-success&#39;:formvalidatehunter.position.$valid,&#39;has-error&#39;:formvalidatehunter.position.$dirty&amp;&amp;formvalidatehunter.position.$invalid}">
+                                <div class="col-md-8">
+                                    <label class="control-label" ng-show="formvalidatehunter.position.$dirty&amp;&amp;formvalidatehunter.position.$error.required">
+                                        <i class="fa fa-bell-o"></i>职位不能为空。</label>
+                                    <input type="text" name="position" ng-model="form.contact_title" required="" class="form-control" id="position" placeholder="请输入职位 ...">
+                                </div>
+                            </div>
+                            <label for="email" class="col-md-3 control-label" style="padding-right:0;">联系人邮箱：</label>
+                            <div class="form-group" ng-class="{&#39;has-success&#39;:formvalidatehunter.email.$valid,&#39;has-error&#39;:formvalidatehunter.email.$dirty&amp;&amp;formvalidatehunter.email.$invalid}">
+                                <div class="col-md-8">
+                                    <label class="control-label" ng-show="formvalidatehunter.email.$dirty
+                                                                        &amp;&amp;formvalidatehunter.email.$invalid
+                                                                        &amp;&amp;!formvalidatehunter.email.$error.required">
+                                        <i class="fa fa-bell-o"></i>请输入正确的邮箱。</label>
+                                    <label class="control-label" ng-show="formvalidatehunter.email.$dirty&amp;&amp;formvalidatehunter.email.$error.required">
+                                        <i class="fa fa-bell-o"></i>邮箱不能为空。</label>
+                                    <input type="email" name="email" ng-model="form.contact_email" required="" class="form-control" id="email" placeholder="请输入邮箱 ...">
+                                </div>
+                            </div>
+                            <label for="mobile" class="col-md-3 control-label" style="padding-right:0;">联系人手机号：</label>
+                            <div class="form-group" ng-class="{&#39;has-success&#39;:formvalidatehunter.mobile.$valid,
+                                                               &#39;has-error&#39;:formvalidatehunter.mobile.$dirty&amp;&amp;formvalidatehunter.mobile.$invalid}">
+                                <div class="col-md-8">
+                                    <label class="control-label" ng-show="formvalidatehunter.mobile.$error.unique">
+                                        <i class="fa fa-bell-o"></i>该人选已被其他猎头推荐到当前职位。</label>
+                                    <label class="control-label" ng-show="formvalidatehunter.mobile.$dirty&amp;&amp;formvalidatehunter.mobile.$error.required">
+                                        <i class="fa fa-bell-o"></i>手机号不能为空。</label>
+                                    <label class="control-label" ng-show="formvalidatehunter.mobile.$error.pattern">
+                                        <i class="fa fa-bell-o"></i>请输入正确的手机号�&nbsp;�。</label>
+                                    <input type="text" name="mobile" ng-model="form.contact_mobile" required="" ng-pattern="/\d{11}/" class="form-control" id="mobile" placeholder="请输入候选人手机号 ...">
+                                </div>
+                            </div>
+                            <label for="remark" class="col-md-3 control-label" style="padding-right:0;">推荐理由：</label>
+                            <div class="form-group" ng-class="{&#39;has-success&#39;:formvalidatehunter.remark.$valid,&#39;has-error&#39;:formvalidatehunter.remark.$dirty&amp;&amp;formvalidatehunter.remark.$invalid}">
+                                <div class="col-md-8">
+                                    <textarea id="remark" name="remark" class="form-control" ng-model="form.remark" required="" ng-minlength="10" rows="3" placeholder="用心填写推荐理由，更容易打动HR。"></textarea>
+                                    <label class="control-label" ng-show="formvalidatehunter.remark.$error.minlength">
+                                        <i class="fa fa-bell-o"></i>推荐理由字数不少于10个字</label>
+                                </div>
+                            </div>
+                            <label class="col-md-3 control-label" style="padding-right:0;">推荐是否保密：</label>
+                            <div class="form-group" ng-class="{&#39;has-success&#39;:formvalidatehunter.is_secret.$valid,&#39;has-error&#39;:formvalidatehunter.is_secret.$dirty&amp;&amp;formvalidatehunter.is_secret.$invalid}">
+                                <div class="col-md-8" style=" padding-top: 7px; ">
+                                    <input type="radio" name="is_secret" ng-model="form.is_secret" value="1" ng-checked="true"> 是
+                                    <input type="radio" name="is_secret" ng-model="form.is_secret" value="0"> 否
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" ng-disabled="formvalidatehunter.$invalid" ng-click="submit()">立即推荐</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<script type="text/javascript">
+$(function() {
+    var str = window.location.origin + "/share?invite_uid=" + $("#invite_uid").val();
+    $("#code").qrcode({
+        width: 128,
+        height: 128,
+        text: str
+    });
+})
+</script>
+</body></html>

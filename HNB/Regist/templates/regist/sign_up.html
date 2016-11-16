@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid bg-grey">
+<div class="redirect text-center">
+	如果您已经注册， 请您登录 <a href="/regist/signin/">Login<a>
+</div>
+</div>
+<div class="container text-center">
+<br><p>创建帐号</p>
+<form role="form" method="post">
+	{% csrf_token %}
+	{{form.non_field_errors}}
+	<br>
+	<div class="fieldWrapper">
+		{{form.username.errors}}
+		<label for="form.username.id_for_label">用户姓名 : </label>
+		{{form.username}}
+	</div>
+	<div class="fieldWrapper">
+		{{form.password.errors}}
+		{{help_text|safe}}
+		<label for="form.password.id_for_label">设置密码 : </label>
+		{{form.password}}
+	</div>
+	<div class="fieldWrapper">
+		{{form.verify_password.errors}}
+		<label for="form.verify_password.id_for_label">确认密码 : </label>
+		{{form.verify_password}}
+	</div>
+	<div class="fieldWrapper">
+		{{form.email.errors}}
+		<label for="form.email.id_for_label"> 邮箱地址 : </label>
+		{{form.email}}
+	</div>
+	<br>
+		<input type="submit" value="完成提交" class="btn button-primary"/>
+
+</form>
+</div>
+{% endblock %}

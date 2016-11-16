@@ -1,0 +1,42 @@
+(function () {
+    'use strict';
+    var controllerId = 'plate';
+    angular.module('app')
+        .controller(controllerId,
+            ['common', 'datacontext', plate]);
+
+    function plate(common, datacontext) {
+        var getLogFn = common.logger.getLogFn;
+        var log = getLogFn(controllerId);
+
+        var vm = this;
+        vm.plate = [];
+        vm.maa = [];
+        vm.title = 'Plate';
+
+        activate();
+
+        function activate() {
+            var promises = [getPlateCast(), getMAA()];
+            common.activateController(promises, controllerId)
+                .then(function () {
+                    log('Activated plate View');
+                });
+        }
+
+        function getMAA() {
+            return datacontext.getMAA().then(function (data) {
+//                vm.maa = data.data[0].data.results;
+                vm.maa = data;
+                return vm.maa;
+            });
+        }
+
+        function getPlateCast() {
+            return datacontext.getPlateCast().then(function (data) {
+                vm.plate = data;
+                return vm.plate;
+            });
+        }
+    }
+})();

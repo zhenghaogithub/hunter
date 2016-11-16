@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="app">
+<head>
+    <style>
+        /* This helps the ng-show/ng-hide animations start at the right place. */
+        /* Since Angular has this but needs to load, this gives us the class early. */
+        .ng-hide {
+            display: none!important;
+        }
+    </style>
+    <title data-ng-bind="title"></title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+
+
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/static/css/styles.css" rel="stylesheet" />
+    <link href="/static/css/customtheme.css" rel="stylesheet">
+
+
+</head>
+<body>
+    <div>
+        <div data-ng-include="'/static/js/layout/shell.html'"></div>
+    </div>
+   
+
+    <span data-cc-scroll-to-top></span>
+
+    <!-- Vendor Scripts -->
+    <script src="/static/js/angular/jquery-2.0.3.js"></script>
+    <script src="/static/js/angular/angular.js"></script>
+    <script src="/static/js/angular/angular-animate.js"></script>
+    <script src="/static/js/angular/angular-route.js"></script>
+    <script src="/static/js/angular/angular-sanitize.js"></script>
+    <script src="/static/js/angular/toastr.js"></script>
+    <script src="/static/js/angular/ui-bootstrap-tpls-0.10.0.js"></script>
+
+    <!-- angularjs config route configer-->
+    <script src="/static/js/config/app.js"></script>
+    <script src="/static/js/config/config.js"></script>
+    <script src="/static/js/config/config.exceptionHandler.js"></script>
+    <script src="/static/js/config/config.route.js"></script>
+
+    <!-- common Modules -->
+    <script src="/static/js/common/common.js"></script>
+    <script src="/static/js/common/logger.js"></script>
+    <script src="/static/js/common/spinner.js"></script>
+    <script src="/static/js/common/bootstrap.dialog.js"></script>
+    <script src="/static/js/common/bootstrap.js"></script>
+
+    <!-- service -->
+    <script src="/static/js/services/datacontext.js"></script>
+    <script src="/static/js/services/directives.js"></script>
+
+
+    <!-- /static/js/app -->
+    <script src="/static/js/app/dashboard/dashboard.js"></script>
+    <script src="/static/js/layout/shell.js"></script>
+    <script src="/static/js/layout/sidebar.js"></script>
+
+    <!-- /static/html/cohunter/app add by myself-->
+    <script src="/static/js/app/Plate/plate.js"></script>
+    <script src="/static/js/app/JobSea/jobsea.js"></script>
+    <script src="/static/js/app/OrderForm/orderform.js"></script>
+    <script src="/static/js/app/CreateTeam/createteam.js"></script>
+    <script src="/static/js/app/CoHunter/Approved/approved.js"></script>
+    <script src="/static/js/app/CoHunter/Approved/detail.js"></script>
+    <script src="/static/js/app/CoHunter/Candidate/candidate.js"></script>
+    <script src="/static/js/app/CoHunter/Candidate/detail.js"></script>
+    <script src="/static/js/app/CoHunter/Failed/failed.js"></script>
+    <script src="/static/js/app/CoHunter/Failed/detail.js"></script>
+
+</body>
+</html>

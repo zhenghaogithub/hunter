@@ -1,0 +1,113 @@
+﻿<section id="dashboard-view" class="mainbar" data-ng-controller="cohunterApproved as vm">
+<style>
+  /*! suit-test v0.1.0 | MIT License | github.com/suitcss */
+
+
+  .jobsea-title {
+    font-size: 2em;
+    font-family: sans-serif;
+    padding: 20px;
+    margin: 20px 0;
+    background: #eee;
+    color: #999;
+  }
+
+  .jobsea-sub-title {
+    font-size: 1.5em;
+    font-family: sans-serif;
+    padding: 20px;
+    margin: 20px 0;
+    background: #fff;
+    color: #999;
+  }
+  .jobsea-sub-sub-title {
+    font-size: 1.5em;
+    font-family: sans-serif;
+    padding: 20px;
+    margin: 20px 0;
+    background: #eee;
+    color: #666;
+  }
+ .jobsea-side-bar{
+    font-size: 1.0em;
+    font-family: sans-serif;
+    padding: 20px;
+    margin: 20px 0;
+    background: #eee;
+    color: #666;
+  }
+
+</style>
+
+    <section class="matter">
+<!--
+            <h3 class="jobsea-sub-sub-title">温馨提示</h1>
+
+            <h1 class="jobsea-title" class="allin-center">我的猎头数据平台</h1>
+
+            <h3 class="jobsea-sub-sub-title">数据详情</h1>
+-->
+
+
+
+	    <div class="row">
+                <div class="col-md-12">
+<!--
+                    <div class="widget wviolet jobsea-sub-sub-title">
+-->
+
+                    <div class="widget wviolet jobsea-sub-sub-title">
+                        <div data-cc-widget-header title="审核成功兼职猎头!"
+                             allow-collapse="true"></div>
+                        <div class="widget-content text-center text-info">
+                            <table class="table table-condensed table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>猎头编号</th>
+                                        <th>中文名</th>
+                                        <th>英文名</th>
+
+                                        <th>所在地</th>
+                                        <th>手机号</th>
+                                        <th>擅长行业</th>
+
+                                        <th>注册日期</th>
+                                        <th>登录日期</th>
+                                        <th>详细信息</th>
+<!--
+
+                                        <th>hell, {{vm.user}}</th>
+                                        <th>注册日期</th>
+                                        <td><a href="cohunterApproved/detail/{{a.JobID}}">{{a.JobID}}</a></td>
+-->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="a in vm.cohunterApprovedData">
+                                        <td>{{a.CoHunterID}}</td>
+                                        <td>{{a.ChineseName}}</td>
+                                        <td>{{a.EnglishName}}</td>
+                                        <td>{{a.Location}}</td>
+                                        <td>{{a.PhoneNo}}</td>
+                                        <td>{{a.Advantage}}</td>
+                                        <td>{{a.RegistTime}}</td>
+					<td>{{a.LoginTime}}</td>
+
+                                        <td><a href="./#/cohunter/approved/detail?id={{a.CoHunterID}}">详情</a></td>
+
+<!--
+                                        <td><a href="./#/cohunter/approved/detail/?1">详情</a></td>
+-->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="widget-foot">
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

@@ -126,10 +126,10 @@ STATIC_URL = '/static/'
 
 
 ######################add by myself##########################
-MEDIA_ROOT = '/home/alex/Documents/zhenghao/engineer/experiment/robot/huntersqlite/Web/media/'
+MEDIA_ROOT = '/home/alex/git/Web/media/'
 MEDIA_URL = '/media/'
 
-TEMPLATES_ROOT = '/home/alex/Documents/zhenghao/engineer/experiment/robot/huntersqlite/Web/templates/'
+TEMPLATES_ROOT = '/home/alex/git/Web/templates/'
 TEMPLATES_URL = '/templates/'
 
 
