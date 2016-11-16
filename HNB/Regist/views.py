@@ -134,11 +134,11 @@ def send_email(toaddr,id):
         times = time.strftime('%Y-%m-%d', time.localtime(time.time()))
 	times = times + time.strftime('-%H:%M', time.localtime(time.time()))
 	authInfo = {}
-	authInfo['server'] = 'smtp.163.com'
-	authInfo['user'] = 'zhenghao20070826'
-	authInfo['password'] = 'zhenghao441514'
-	fromAdd = 'zhenghao20070826@163.com'
-	toAdd = ['976069849@qq.com','zhenghao20070826@163.com']
+	authInfo['server'] = '******************'
+	authInfo['user'] = '********************'
+	authInfo['password'] = '****************'
+	fromAdd = '*****************'
+	toAdd = ['976069849@qq.com','********************']
 	subject = 'job report'
 
 	h1 = '<html> <p>Dear Hao.Zheng</p>'
