@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Web',
     'Robot',
+    'Regist',
 ]
 
 MIDDLEWARE = [
@@ -105,8 +106,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+#LANGUAGE_CODE = 'en-us'
 
+########################add by myself#######################
+LANGUAGE_CODE = 'zh-Hans'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -120,3 +123,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+######################add by myself##########################
+MEDIA_ROOT = '/home/alex/Documents/zhenghao/engineer/experiment/robot/huntersqlite/Web/media/'
+MEDIA_URL = '/media/'
+
+TEMPLATES_ROOT = '/home/alex/Documents/zhenghao/engineer/experiment/robot/huntersqlite/Web/templates/'
+TEMPLATES_URL = '/templates/'
+
+
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [
+    # ... the rest of your URLconf goes here ...
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.TEMPLATES_URL, document_root=settings.TEMPLATES_ROOT)
+
+
