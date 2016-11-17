@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+
+<p align="center">阶乘在线计算器</p>
+<form  method="GET" action="../combinatorics/compute_perm/">
+
+    <div align="center">
+
+        <table cellSpacing=0 borderColorDark=#C0C0C0 width=436 borderColorLight=#400040 border=1>
+            <tr>
+                <td width="%100" colspan=5 bgcolor="#99ccff">
+                    <div align="center">
+                        <p>
+                            <big>
+                                计算器...对于n!
+                            </big>
+                        </p>
+
+                    </div>
+
+                </td>
+            </tr>
+
+            <tr >
+                <td width="15%" bgcolor="#99CCFF">
+                    <p align="left">Input
+                    <em> n = </em>
+                     </p>
+                </td>
+                <td width="5%" bgcolor="#99CCFF">
+                   <input  size = "4pt" name = "perm_input"  {{ perm_input  }} >
+                </td>
+                <td width="15%" bgcolor="#99CCFF">
+                    <p align="left">Result
+                    <em> n! = </em>
+                     </p>
+                </td>
+                <td align=middle width="55%" bgcolor="#99CCFF">
+                	<input
+                        name= "perm_result"
+                        {{ perm_result }}
+                    >
+                </td>
+
+                <td width="10%" bgcolor="#99CCFF">
+                    <input type="submit" value="submit">
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>
+
+
+<HR size="1">
+
+
+
+
+</body>
+</html>

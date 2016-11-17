@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h3 align="center"> 处理流程 </h3>
+<h5 align="center"> 验证两个不同构的sts(13)</h5>
+
+<p>
+     <ol>
+    <li>
+        验证sts(13)
+    </li>
+
+    <li>
+        验证不同构
+    </li>
+     </ol>
+</p>
+
+
+<h5 align="center"> 寻找不同构的gsts(13)</h5>
+
+<ol>
+    <li>
+        统一无穷远点（a,b）->(11,12)
+        <ol>
+            <li>
+                取(i,j),i < j, i , j ∈ z_13),计算a,b,使得a * i + b = 11,a * j + b = 12.得到 13 * （13 - 1）/2 共78 个.
+            </li>
+
+            <li>
+                利用这78个映射分别作用在A，B上,并利用如下数据结构记录结果:
+                <ol>
+                    <li>
+                        mapsts[k]["i:j"] = [ A_1,A_2, ......],
+                    </li>
+                    <li>
+                        circles[k]["i:j"] = [circle_1,circle_2,......]
+                    </li>
+
+                    注:k = 0 表示A, k = 1 表示 B.
+                </ol>
+            </li>
+
+        </ol>
+    </li>
+
+    <li>
+        统一存储结构
+        <ol>
+            <li>
+                对做置换将c->0,并重新求解对应的sts(13)，及其circle
+            </li>
+            <li>
+                对每一个sts(13)及其circle，存储这个sts(13)以及不同方向的circle.
+            </li>
+            <li>
+                存储的结构为unions[k][types] = [[sts,circle],[sts,circle],......]
+            </li>
+            注：这里的k =0,1 分别表示A,B,types = 0表示圈的形式，types = 1表示圈的另一种形式.
+        </ol>
+    </li>
+
+    <li>
+        寻找不同构gsts(13)
+        <ol>
+            <li>
+                判断相同gsts(13)是否同构.
+                <ol>
+                    <li>
+                        如果两个gsts的circle是10圈,我们考虑10！中映射，如果一个能得到另外一个，那么这两个同构.
+                        如果对于10！种映射都不能从一个映射得到另外一个映射，那么这两个gsts(13)就不同构.
+                    </li>
+                </ol>
+            </li>
+            <li>
+                挑选一个不同构的gst存储下来.存储格式:non_iso_sts[key][types] = [[sts,circle],[sts,circle]......]
+            </li>
+
+        </ol>
+    </li>
+
+</ol>
+
+
+<h5 align="center"> 寻找gls(13)</h5>
+
+<ol>
+    <li>
+        从non_iso_sts 中任取一个gls(13),记为gls_1
+    </li>
+    <li>
+        生成non_iso_sts中所有gls的同构的gls,要求与gls_1不相交,并且按照(11,12,i)来分组
+    </li>
+    <li>
+        建立一张大表，要求任意两个之间的组之间都有一个明确相交与否的关系,共需要9 * 8 /2 = 36 张表.
+    </li>
+    <li>
+        通过查表，寻找10个不相交的gsts(13),如果没有，则换另外一个gsts作为首发？？
+    </li>
+
+</ol>
+
+</body>
+</html>

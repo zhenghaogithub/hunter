@@ -1,0 +1,91 @@
+﻿body {
+    font-family:"Microsoft YaHei","MicrosoftJhengHei",STHeiti,MingLiu;
+    color:#111111;    font-size:13px;
+    letter-spacing: 0px;
+    overflow-x:auto;
+    overflow-y:auto;
+    BACKGROUND-COLOR:#CEC9AB;
+	margin-top:0px;
+	margin-left:0px;
+	margin-right:0px;
+	overflow-x:hidden;}
+
+A {
+    text-decoration:none;color:#111111;}
+A:link {
+    font-size: 13px;
+	color: #111111;
+	text-decoration: none;}
+A:hover {
+    COLOR: #CC0000;
+	TEXT-DECORATION:none;}
+A:visited {    font-size:13px;
+	text-decoration:none;}
+A:active {    font-size:13px;
+	color: #CC0000;}
+
+td {    font-size:13px;
+		font-family:"Microsoft YaHei","MicrosoftJhengHei",STHeiti,MingLiu;}
+
+.food {
+    font-size: 13px;
+	font-weight: normal;
+	color: #000000;}
+
+Table {
+ border-collapse: collapse;}
+
+P {
+    FONT-SIZE:13px;
+	LINE-HEIGHT:17px;
+	font-family:"Microsoft YaHei","MicrosoftJhengHei",STHeiti,MingLiu;}
+
+img {
+	border:0px;}
+
+.lefttitle {
+	color:#FFFFFF;
+	font-size:16px;
+	font-weight:bold;
+	font-family:simhei;}
+
+.leftnav {
+	font-size:16px;
+	font-weight:bold;
+	font-family:simhei;}
+
+.leftnav_now {
+	font-size:16px;
+	font-weight:bold;
+	font-family:simhei;
+	color:#CC0000;}
+
+A.leftnav:link {
+	COLOR: #111111;
+	TEXT-DECORATION:none;}
+
+A.leftnav:hover {
+	COLOR: #CC0000;
+	TEXT-DECORATION:none;}
+
+A.leftnav:active {
+	COLOR: #CC0000;
+	TEXT-DECORATION:none;}
+
+.fonttitle {
+	font-size:15px;
+	font-weight:bold;}
+
+.sitenav {
+	font-size:16px;
+	color:#4C3201;
+	font-weight:bold}
+
+.newstitle {
+	font-size:16px;
+	color:#861622;
+	font-weight:bold}
+
+.link {
+	font-size:15px;
+	font-weight:200}

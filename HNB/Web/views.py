@@ -20,3 +20,10 @@ def index(request):
     #print "i am in index", request.user
     #return render_to_response("../templates/index.html",{"Request":request})
     return render_to_response("../templates/index.html")
+
+
+@login_required(login_url='/regist/signin/')
+def robot(request):
+    #print "i am in index", request.user
+    #return render_to_response("../templates/index.html",{"Request":request})
+    return HttpResponse("你好")

@@ -1,187 +1,64 @@
-﻿<section id="dashboard-view" class="mainbar" data-ng-controller="plate as vm">
-<style>
-  /*! suit-test v0.1.0 | MIT License | github.com/suitcss */
+<section id="dashboard-view" class="mainbar">
+         <link rel="stylesheet" href="/static/css/robot.css">
+         <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+         <script>
+            $('#account').bind('keyup', function(event) {
+		if (event.keyCode == "13") {
+			//回车执行查询
+			$('#submit').click();
+		}
+	   });
+        </script>
+        
+
+<div onload="document.body.scrollTo(0,document.body.scrollHeight)">
+         <div class="chatContainer">
+              <ul class="wei-chat" id=chatPanel>
+			<li><img src="/static/images/0.jpg" class="imgright">
+                                 <span class="spanright">
+                                       <p> 
+                                           Hi，我是机器人，我可以查天气，讲笑话，订机票哦~ 除此之外还有几十项实用好玩的功能哦~ 快来试试吧
+                                       </p>
+                                 </span>
+                        </li>
+			<li><img src="/static/images/1.jpg" class="imgleft">
+                                <span class="spanleft">讲个笑话呗
+                                </span>
+                        </li>
+			<li><img src="/static/images/0.jpg" class="imgright">
+                                    <span class="spanright">
+                                       <p>病孩："妈妈，发药的阿姨为什么戴口罩？"</p>
+                                       <p>妈妈："给你的药很好吃，院长怕她们偷吃了。"</p>
+                                       <p>病孩："那给那些拿刀的叔叔戴口罩是怕他们聚餐吧？"</p>
+                                    </span>
+                        </li>
+			<li><img src="/static/images/1.jpg" class="imgleft">
+                                    <span class="spanleft">在讲一个笑话
+                                    </span>
+                        </li>
+			<li><img src="/static/images/0.jpg" class="imgright">
+                                    <span class="spanright">
+                                       <p>父亲："你负责教好你弟弟。"</p>
+                                       <p>儿子："如果他不听我的话呢?"</p>
+                                       <p>父亲："那就证明你无能。"</p>
+                                       <p>儿子："如果不听你的话呢?"</p>
+                                       <p>父亲："那就证明……"
+                                    </span>
+                        </li>
+			<li><img src="/static/images/1.jpg" class="imgleft">
+                                   <span class="spanleft">我醉了</span>
+                        </li>
+	     </ul>
+         <div >
 
 
-  .jobsea-title {
-    font-size: 2em;
-    font-family: sans-serif;
-    padding: 20px;
-    margin: 20px 0;
-    background: #eee;
-    color: #999;
-  }
-
-  .jobsea-sub-title {
-    font-size: 1.5em;
-    font-family: sans-serif;
-    padding: 20px;
-    margin: 20px 0;
-    background: #fff;
-    color: #999;
-  }
-  .jobsea-sub-sub-title {
-    font-size: 1.5em;
-    font-family: sans-serif;
-    padding: 20px;
-    margin: 20px 0;
-    background: #eee;
-    color: #666;
-  }
- .jobsea-side-bar{
-    font-size: 1.0em;
-    font-family: sans-serif;
-    padding: 20px;
-    margin: 20px 0;
-    background: #eee;
-    color: #666;
-  }
-
-
-
-
-</style>
-
-    <section class="matter">
-            <h1 class="jobsea-title" class="allin-center">我的猎头数据平台</h1>
+  	 <div class="inputContainer">
+	      <input id="account" class="messageInput" placeholder="你想问机器人什么？" data-input-clear="2" type="text" name="a1">
+	      <input class="btnInput" value="发送" id="submit" data-ng-controller="robot" data-ng-click="sendMessage()" type="submit">
 <!--
-            <h3 class="jobsea-sub-sub-title">温馨提示</h1>
+	      <input class="btnInput" value="发送" id="submit" data-ng-controller="robot" data-ng-click="sendMessage()" type="submit">
 -->
+ 	 </div>
+</div>
 
-            <p class='jobsea-sub-title'> 欢迎来到猎头招聘平台， 根据协议， 您每成交一笔交易， 都将获取10%的佣金，为了方便我们与您沟通联系， 期望您能完善您的个人信息。 如果您有任何异议， 请联系监督委员会：13581989543 </p>
-
-            <h3 class="jobsea-sub-sub-title">历史数据</h1>
-           
-             <table class="table table-condensed table-striped jobsea-sub-title">
-                    <thead>
-                           <tr>
-                             <th>日期</th>
-                             <th>接单数目</th>
-                             <th>完成数目</th>
-                             <th>待完成岗位</th>
-                             <th>岗位收入</th>
-                             <th>奖金提成</th>
-                             <th>累计收入</th>
-                           </tr>
-                    </thead>
-                    <tbody>
-<!--
-                          <tr data-ng-repeat="a in vm.orderforms">
-                                 <td>{{a.name}}</td>
-                                 <td>{{a.character}}</td>
-                          </tr>
--->
-                          <tr>
-                                 <td>一月</td>
-                                 <td>20</td>
-                                 <td>10</td>
-                                 <td>10</td>
-                                 <td>30000.00</td>
-                                 <td>5000.00</td>
-                                 <td>35000.00</td>
-                          </tr>
-                          <tr>
-                                 <td>二月</td>
-                                 <td>20</td>
-                                 <td>10</td>
-                                 <td>10</td>
-                                 <td>30000.00</td>
-                                 <td>5000.00</td>
-                                 <td>35000.00</td>
-                          </tr>
-                          <tr>
-                                 <td>三月</td>
-                                 <td>20</td>
-                                 <td>10</td>
-                                 <td>10</td>
-                                 <td>30000.00</td>
-                                 <td>5000.00</td>
-                                 <td>35000.00</td>
-                          </tr>
-                          <tr>
-                                 <td>四月</td>
-                                 <td>20</td>
-                                 <td>10</td>
-                                 <td>10</td>
-                                 <td>30000.00</td>
-                                 <td>5000.00</td>
-                                 <td>35000.00</td>
-                          </tr>
-
-                          <tr>
-                                 <td>五月</td>
-                                 <td>20</td>
-                                 <td>10</td>
-                                 <td>10</td>
-                                 <td>30000.00</td>
-                                 <td>5000.00</td>
-                                 <td>35000.00</td>
-                          </tr>
-                          <tr>
-                                 <td>六月</td>
-                                 <td>20</td>
-                                 <td>10</td>
-                                 <td>10</td>
-                                 <td>30000.00</td>
-                                 <td>5000.00</td>
-                                 <td>35000.00</td>
-                          </tr>
-
-                    </tbody>
-            </table>
-
-
-
-            <h3 class="jobsea-sub-sub-title">数据详情</h1>
-
-	    <div class="row">
-                <div class="col-md-12">
-<!--
-                    <div class="widget wviolet jobsea-sub-sub-title">
--->
-
-                    <div class="widget wviolet jobsea-sub-sub-title">
-                        <div data-cc-widget-header title="请您查看您的详细数据， 如果有疑问， 请您留言或联系我们!"
-                             allow-collapse="true"></div>
-                        <div class="widget-content text-center text-info">
-                            <table class="table table-condensed table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>岗位编号</th>
-                                        <th>岗位详情</th>
-                                        <th>接单日期</th>
-                                        <th>完成进度</th>
-                                        <th>简历数目</th>
-                                        <th>hell, {{vm.user}}</th>
-<!--
-                                        <th>匹配程度</th>
-                                        <td><a href="plate/detail/{{a.JobID}}">{{a.JobID}}</a></td>
--->
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr data-ng-repeat="a in vm.platedata">
-                                        <td><a href="./#/plate/detail/">{{a.JobID}}</a></td>
-                                        <td><a href="www.baidu.com">{{a.JobInfor}}</a></td>
-                                        <td><a href="www.baidu.com">{{a.AcceptTime}}</a></td>
-                                        <td><a href="www.baidu.com">{{a.Status}}</a></td>
-                                        <td><a href="www.baidu.com">{{a.CVCounts}}</a></td>
-<!--
-                                        <td>{{a.JobInfor}}</td>
-                                        <td>{{a.AcceptTime}}</td>
-                                        <td>{{a.Status}}</td>
-                                        <td>{{a.CV}}</td>
--->
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="widget-foot">
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 </section>

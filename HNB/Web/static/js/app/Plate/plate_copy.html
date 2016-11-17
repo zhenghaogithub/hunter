@@ -1,36 +1,115 @@
-﻿<section class="mainbar" data-ng-controller="plate as vm">
-    <section class="matter">
-        <div class="container">
-            <div class="row">
-                <div class="widget wblue">
-                    <div data-cc-widget-header title="{{vm.title}}"></div>
-                    <div class="widget-content user">
-                        <!--<pre>{{vm.maa.data | json}}</pre>-->
-                        <input data-ng-model="vm.filter.name" placeholder="Find plate by name"/>
-                        <table class="table table-condensed table-striped">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th>Character</th>
-                                <th>Description</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr data-ng-repeat="c in vm.maa | filter:vm.filter track by c.id">
-                                <td><img
-                                        ng-src="{{c.thumbnail.path}}.{{c.thumbnail.extension}}"
-                                        class="avenger-thumb img-rounded"/></td>
-                                <td><span class="avenger-name">{{c.name}}</span></td>
-                                <td>{{c.description | limitTo: 2000 }} ...</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="widget-foot">
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="dashboard-view" class="mainbar" data-ng-controller="plate as vm">
+         <link rel="stylesheet" href="/static/css/robot.css">
+         <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+         <script>
+       		       function sendMessage(){
+				var txt=document.getElementById("account").value;
+				writeMessage(txt);
+				setTimeout(function(){LoadChat(txt);},10);
+			};
+			function writeMessage(txt){
+				var d=document.getElementById("chatPanel")
+
+				var li =document.createElement("li");
+				var img =document.createElement("img");
+				var span =document.createElement("span");
+				//span.innerHTML=" <img src="/static/images/1.jpg" class="imgleft">"
+				span.innerHTML= txt;
+				img.src = "/static/images/1.jpg";
+				img.className = "imgleft";
+
+				//li.innerHTML="<span class="spanleft"> hello</span>"
+
+				span.className="spanleft";
+
+				li.appendChild(img);
+				li.appendChild(span);
+
+				d.appendChild(li);
+			};
+			function writeAnswer(txt){
+ 	                        var d=document.getElementById("chatPanel")
+				var li =document.createElement("li");
+				var img =document.createElement("img");
+				var span =document.createElement("span");
+				span.innerHTML= txt;
+				img.src = "/static/images/0.jpg";
+				img.className = "imgright";
+				span.className="spanright";
+				li.appendChild(img);
+				li.appendChild(span);
+				d.appendChild(li);
+			};
+			function LoadChat(tempStr){
+				var code =$("#account").val();
+				document.getElementById("account").value="";
+				code = "a1=" + code;
+				console.log(code);
+				$.ajax({
+					//url: 'data2.json',//后台地址
+					url: '#/robot/ajax_dict',//后台地址
+					type: 'get',
+					data: code,
+					dataType:  'json',
+					success: function (data, textStatus) {
+console.log("data"+data);
+						writeAnswer(data.answer);
+					},
+					error: function(XMLHttpRequest, textStatus, errorThrown) {
+						console.log(XMLHttpRequest.status);
+						console.log(XMLHttpRequest.readyState);
+						console.log(textStatus);
+					}
+				});
+		};
+		</script>
+
+
+<div onload="document.body.scrollTo(0,document.body.scrollHeight)">
+         <div class="chatContainer">
+              <ul class="wei-chat" id=chatPanel>
+			<li><img src="/static/images/0.jpg" class="imgright">
+                                 <span class="spanright">
+                                       <p> 
+                                           Hi，我是机器人，我可以查天气，讲笑话，订机票哦~ 除此之外还有几十项实用好玩的功能哦~ 快来试试吧
+                                       </p>
+                                 </span>
+                        </li>
+			<li><img src="/static/images/1.jpg" class="imgleft">
+                                <span class="spanleft">讲个笑话呗
+                                </span>
+                        </li>
+			<li><img src="/static/images/0.jpg" class="imgright">
+                                    <span class="spanright">
+                                       <p>病孩："妈妈，发药的阿姨为什么戴口罩？"</p>
+                                       <p>妈妈："给你的药很好吃，院长怕她们偷吃了。"</p>
+                                       <p>病孩："那给那些拿刀的叔叔戴口罩是怕他们聚餐吧？"</p>
+                                    </span>
+                        </li>
+			<li><img src="/static/images/1.jpg" class="imgleft">
+                                    <span class="spanleft">在讲一个笑话
+                                    </span>
+                        </li>
+			<li><img src="/static/images/0.jpg" class="imgright">
+                                    <span class="spanright">
+                                       <p>父亲："你负责教好你弟弟。"</p>
+                                       <p>儿子："如果他不听我的话呢?"</p>
+                                       <p>父亲："那就证明你无能。"</p>
+                                       <p>儿子："如果不听你的话呢?"</p>
+                                       <p>父亲："那就证明……"
+                                    </span>
+                        </li>
+			<li><img src="/static/images/1.jpg" class="imgleft">
+                                   <span class="spanleft">我醉了</span>
+                        </li>
+	     </ul>
+         <div >
+
+
+  	 <div class="inputContainer">
+	      <input id="account" class="messageInput" placeholder="你想问机器人什么？" data-input-clear="2" type="text" name="a1">
+	      <input class="btnInput" value="发送" id="submit" onclick="sendMessage()" type="submit">
+ 	 </div>
+</div>
+
 </section>

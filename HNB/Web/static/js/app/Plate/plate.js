@@ -1,81 +1,72 @@
 (function () {
-    'use strict';
-    var controllerId = 'plate';
-    //angular.module('app').controller(controllerId, ['common', 'datacontext', plate]);
+    var MyApp = angular.module('app');
+    var controllerId = "robot";
+    MyApp.controller(controllerId,['$rootScope', '$http', '$scope', 'common','config','datacontext', robot])
+    function robot($scope)
+    {
+         $scope.sendMessage = function(){
+				var txt=document.getElementById("account").value;
+				writeMessage(txt);
+				loadChat(txt);
 
-    angular.module('app').controller(controllerId,
-            ['$rootScope', '$http', 'common','config','datacontext', plate]);
-    //function plate(common, datacontext) {
-    function plate($rootScope, $http, common, datacontext) {
-        var getLogFn = common.logger.getLogFn;
-        var log = getLogFn(controllerId);
+                                function writeMessage(txt){
+     				var d=document.getElementById("chatPanel")
+     
+     				var li =document.createElement("li");
+     				var img =document.createElement("img");
+     				var span =document.createElement("span");
+     				span.innerHTML= txt;
+     				img.src = "/static/images/1.jpg";
+     				img.className = "imgleft";
+     
+     
+     				span.className="spanleft";
+     
+     				li.appendChild(img);
+     				li.appendChild(span);
+     				d.appendChild(li);
+                                };
+     
+                                function writeAnswer(txt){
+      	                        var d=document.getElementById("chatPanel")
+     				var li =document.createElement("li");
+     				var img =document.createElement("img");
+     				var span =document.createElement("span");
 
-        var vm = this;
-        vm.news = {
-            title: 'Marvel Plate',
-            description: 'Marvel Plate 2 is now in production!'
-        };
-        vm.plateCount = 0;
-        vm.platedata = [];
-        vm.title = 'Plate';
-        //add later
-        vm.user = "alex"
-        console.log(vm.user)
+                                console.log("answer in " + txt);
+     				span.innerHTML= txt;
+     				img.src = "/static/images/0.jpg";
+     				img.className = "imgright";
+     				span.className="spanright";
+     				li.appendChild(img);
+     				li.appendChild(span);
+     				d.appendChild(li);
+                                };
+     
+                                function loadChat(tempStr){
+     				var code =$("#account").val();
+     				document.getElementById("account").value="";
+     				code = "a1=" + code;
+     				console.log(code);
+     				$.ajax({
+     					url: '/robot/robot',//后台地址
+     					type: 'get',
+     					data: code,
+     					dataType:  'json',
+     					success: function (data, textStatus) {
+                                                console.log(data);
+     						writeAnswer(data.answer);
+     					},
+     					error: function(XMLHttpRequest, textStatus, errorThrown) {
+     						console.log(XMLHttpRequest.status);
+     						console.log(XMLHttpRequest.readyState);
+     						console.log(textStatus);
+     					}
+     				});
+                                };
 
-        activate();
-
-        function activate() {
-            //var promises = [getOrderFormCount(), getPlateCast()];
-            var promises = [getPlateData($http),getUser($http)];
-            common.activateController(promises, controllerId)
-                .then(function () { log('Activated platedata View'); });
-        }
-
-        getPlateData($http);
-        function getPlateData($http) {
-            $http({method: 'GET', url: '/design/index/'}).
-          then(function(response) {
-            vm.status = response.status;
-            vm.platedata = response.data;
-            console.log('sucess in get platedata ')
-            console.log(vm.platedata)
-          }, function(response) {
-            vm.data = response.data || 'Request failed';
-            vm.status = response.status;
-        });
-        }
-
-        getUser($http);
-        function getUser($http) {
-            $http({method: 'GET', url: '/hunter/user/'}).
-          then(function(response) {
-            vm.status = response.status;
-            vm.user = response.data[0].name;
-            console.log('sucess in get User')
-            console.log(vm.data)
-          }, function(response) {
-            vm.data = response.data || 'Request failed';
-            vm.status = response.status;
-        });
-        }
+       }
+}
 
 
-
-
-        /*
-        function getOrderFormCount() {
-            return datacontext.getOrderFormCount().then(function (data)            {
-                vm.plateCount = data;
-                return vm.plateCount;
-            });
-        }
-
-        function getPlateCast() {
-            return datacontext.getPlateCast().then(function (data) {
-                vm.plates = data;
-                return vm.orderforms;
-            });
-        }
-        */
-    }
 })();

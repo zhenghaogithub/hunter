@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MathJax TeX Test Page</title>
+<!-- Copyright (c) 2010-2015 The MathJax Consortium -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+  });
+</script>
+<script type="text/javascript" src="../../static/js/MathJax/MathJax.js?config=TeX-AMS_HTML-full"></script>
+
+</head>
+
+<body>
+
+<p>
+
+First we present some necessary definitions.  A {\it Steiner triple system} of order $v$, denoted
+by STS$(v)$, is a pair $(X, {\cal B})$, where $X$ is a $v$-set and
+${\cal B}$ is a collection of triples (called {\it blocks}) of $X$
+such that every pair of $X$ is contained in a unique block of ${\cal B}$. Let $(X, {\cal B})$ be an STS$(v)$.
+
+</p>
+
+<p>
+ If there exists a partition
+$\Gamma=\{P_1, P_2,\ldots , P_{(v-1)/2}\}$ of ${\cal B}$ such that
+each part $P_i$ forms a {\it parallel class}, i.e. a partition of
+$X$, then the STS$(v)$ is called {\it resolvable} and $\Gamma$ is
+called a {\it resolution}. A resolvable STS$(v)$  is usually called
+a {\it Kirkman triple system} of order $v$, briefly by KTS$(v)$. It is
+well known that a  KTS$(v)$ exists if and only if $v\equiv 3$ (mod
+6) (see \cite{kts}).
+</p>
+
+
+<p>
+  Two STS($v$)s on the same set
+$X$ are said to be {\it disjoint} if they have no triples in common.
+A set of $v-2$ pairwise disjoint STS($v$)s on the same set $X$ is
+called a {\it large set} of STS($v$)s and denoted by LSTS($v$).
+  A large set of
+Kirkman triple systems of order $v$, denoted by LKTS$(v)$, is an
+LSTS$(v)$ where each STS$(v)$ is resolvable.
+
+
+</p>
+
+</body>
+</html>

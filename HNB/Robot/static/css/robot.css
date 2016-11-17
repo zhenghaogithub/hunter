@@ -1,0 +1,86 @@
+.robot{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-family: '微软雅黑'
+ }
+
+
+ .wei-chat img {
+    width: 60px;
+    height: 60px;
+ }
+ .wei-chat {
+    font-size: 20px;
+    min-height: 662px;
+    overflow: auto;
+    padding: 5px;
+ }
+ .wei-chat li {
+    margin-top: 10px;
+    padding-left: 10px;
+    display: block;
+    clear: both;
+    overflow: hidden;
+ }
+ .wei-chat li img {
+    float: left;
+ }
+ .wei-chat li span{
+    background: #7cfc00;
+    padding: 10px;
+    border-radius: 10px;
+    float: left;
+    margin: 6px 10px 0 10px;
+    max-width: 310px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 3px #ccc;
+ }
+ .wei-chat li img.imgleft {
+    float: left;
+ }
+ .wei-chat li img.imgright {
+    float: right;
+ }
+ .wei-chat li span.spanleft {
+    float: left;
+    background: #fff;
+ }
+ .wei-chat li span.spanright {
+    float: right;
+    background: #7cfc00;
+ }
+.chatContainer{
+    width:100%;
+    margin-bottom:250px;
+}
+.inputContainer{
+    width:85%;
+    height:10%;
+    background: #EFEFF4;
+    padding:4px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+}
+.messageInput{
+  border: 0;
+  width:85%;
+  height:85%;
+  display:block;
+  margin: 0 auto;
+  float:left;
+  font-size: 18px;
+}
+.btnInput{
+  float:left;
+  color: #fff;
+  background-color: #007aff;
+  border-radius: 3px;
+  width:15%;
+  height:85%;
+  font-size: 28px;
+  cursor: pointer;
+}
+.meText{color:#007aff}
+

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="../../static/css/biggirl.css">
+		<link rel="stylesheet" href="../../static/css/reset.css">
+		<script type="text/javascript" src="../../static/js/jquery-2.js"></script>
+		<script type="text/javascript" src="../../static/js/base.js"></script>
+		<meta name="viewport" content="width=device-width,user-scalable=no">
+		<script>
+			document.onkeydown = function(e){
+				if(!e) e = window.event;//火狐中是 window.event
+				if((e.keyCode || e.which) == 13){
+					document.getElementById("submit").click();
+				}
+			};
+			function sendMessage(){
+				var txt=document.getElementById("account").value;
+				writeMessage(txt);
+				setTimeout(function(){LoadChat(txt);},1000);
+			};
+			function writeMessage(txt){
+				var d=document.getElementById("chatPanel")
+				var div=document.createElement("div");
+				div.innerHTML="求职者："+txt;
+				div.className="meText";
+				d.appendChild(div);
+				d.scrollTop = d.scrollHeight;
+			};
+			function writeAnswer(txt){
+				var d=document.getElementById("chatPanel")
+				var div=document.createElement("div");
+				div.innerHTML="机器人："+txt;
+				div.className="bText";
+				d.appendChild(div);
+				
+				
+			};
+			function LoadChat(tempStr){
+				var code =$("#account").val();
+				document.getElementById("account").value="";
+				code = "a1=" + code;
+				console.log(code);
+				$.ajax({
+					//url: 'data2.json',//后台地址
+					url: '/robot/ajax_dict',//后台地址
+					type: 'get',
+					data: code,
+					dataType:  'json',
+					success: function (data, textStatus) {
+console.log("data"+data);
+						writeAnswer(data.answer);
+					},
+					error: function(XMLHttpRequest, textStatus, errorThrown) {
+						console.log(XMLHttpRequest.status);
+						console.log(XMLHttpRequest.readyState);
+						console.log(textStatus);
+					}
+				});
+		};
+		</script>
+	</head>
+	<body onload="document.body.scrollTo(0,document.body.scrollHeight)">
+		<div class="container">
+			<div class="chatContainer" id="chatPanel">
+				<div class="bText">机器人：您好， 很高兴为您服务！</div>
+			</div>
+			
+			<div class="inputContainer">
+				<input id="account" class="nameInput" placeholder="你想问机器人什么？" data-input-clear="2" type="text" name="a1">
+				<input class="btnInput" value="发送" id="submit" onclick="sendMessage()" type="submit">
+			</div>
+		</div>
+<script>
+           document.write(new Array(10).join("<br>"))
+</script>
+
+</body>
+</html>

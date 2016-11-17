@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script type='text/javascript' src='../../../../../../../../../static/js/MathJax.js'></script>
+</head>
+<body>
+<h3 align="center"> 从简单的例子理解定义 </h3>
+<h5 align="center"> STS(7)例子fdafdja</h5>
+
+<p>
+
+    $\frac{b}{a}$, we are chinese 
+     &nbsp;  &nbsp;       X= {0,1,2,3,4,5,6},v = 7, k = 3, t = 2<span style="color:blue"> STS(7) </span> = {
+</p>
+
+  <table align="center">
+     <tr>
+        <td>
+            {0,1,3},{1,2,4},{2,3,5},{3,4,6},{0,4,5},{1,5,6},{0,2,6}
+        </td>
+    </tr>
+    </table>
+ &nbsp;  &nbsp; }
+
+
+<h5 align="center"> STS(15) 的例子</h5>
+<p>
+    &nbsp;  &nbsp;X= {0,1,2,3,4,5,6,7,8,9,10,11,12,a,b},v = 15, k = 3, t = 2, &#198_0 = <span style="color:blue"> STS(15) </span> = {
+</p>
+
+ <table align="center">
+    <tr>
+        <td>
+            {0,1,9}
+        </td>
+
+        <td>
+            {2,4,12}
+        </td>
+
+        <td>
+            {5,10,11}
+        </td>
+
+        <td>
+            {7,8,a}
+        </td>
+
+        <td>
+            {3,6,b}
+        </td>
+    </tr>
+
+     <tr>
+        <td>
+            {0,2,7}
+        </td>
+
+        <td>
+            {3,4,8}
+        </td>
+
+        <td>
+            {5,6,12}
+        </td>
+
+        <td>
+            {9,11,a}
+        </td>
+
+        <td>
+            {1,10,b}
+        </td>
+    </tr>
+
+
+     <tr>
+        <td>
+            {0,3,11}
+        </td>
+
+        <td>
+            {1,7,12}
+        </td>
+
+        <td>
+            {6,8,10}
+        </td>
+
+        <td>
+            {2,5,a}
+        </td>
+
+        <td>
+            {4,9,b}
+        </td>
+    </tr>
+
+
+
+     <tr>
+        <td>
+            {0,4,6}
+        </td>
+
+        <td>
+            {1,8,11}
+        </td>
+
+        <td>
+            {2,9,10}
+        </td>
+
+        <td>
+            {3,12,a}
+        </td>
+
+        <td>
+            {5,7,b}
+        </td>
+    </tr>
+
+
+     <tr>
+        <td>
+            {0,5,8}
+        </td>
+
+        <td>
+            {1,2,3}
+        </td>
+
+        <td>
+            {6,7,9}
+        </td>
+
+        <td>
+            {4,10,a}
+        </td>
+
+        <td>
+            {11,12,b}
+        </td>
+    </tr>
+
+
+     <tr>
+        <td>
+            {0,10,12}
+        </td>
+
+        <td>
+            {3,5,9}
+        </td>
+
+        <td>
+            {4,7,11}
+        </td>
+
+        <td>
+            {1,6,a}
+        </td>
+
+        <td>
+            {2,8,b}
+        </td>
+    </tr>
+
+     <tr>
+        <td>
+            {1,4,5}
+        </td>
+
+        <td>
+            {2,6,11}
+        </td>
+
+        <td>
+            {3,7,10}
+        </td>
+
+        <td>
+            {8,9,12}
+        </td>
+
+        <td>
+            {0,a,b}
+        </td>
+    </tr>
+
+  </table>
+ &nbsp;  &nbsp; }
+
+
+<h5 align="center"> GSTS(15) 的例子</h5>
+<p>
+     &nbsp;  &nbsp;对于上例STS(15),令a = a,b = b,c = 0.令有向集取边集D_0 = {(7,8),(8,2),(2,5),(5,7),(11,9),(9,4),
+(4,10),(10,1),(1,6),(6,3),(3,12),(12,11)},那么 (X,a,b,&#198_0,D_0) 是一个<span style="color:blue"> gsts(15) </span>
+
+</p>
+
+
+<h5 align="center"> LSTS(15) , LGS(15) 的例子</h5>
+
+<p>
+     &nbsp;  &nbsp;对于上例sts(15),令a = a,b = b,c = 0.,那么 (X,a,b,&#198_0,D_0) 是一个gsts(15).令&#198_i = {{x + i, y + i, z + i }:{x,y,z} ∈ &#198_0},
+那么{(X,&#198_i):i ∈ z_13 }是一个<span style="color:blue"> lsts(15) </span>.令D_i = {(x + i, y + i):(x,y)∈ D_0,i ∈ z_13 },那么{(X,a,b,&#198_i,D_i):i ∈ z_13 }是一个<span style="color:blue">gls(15)</span>.
+
+</p>
+
+<p>
+     &nbsp;  &nbsp;注：这里a,b 作为不动点，不参与运算.z_13表示在环下做的模运算.
+</p>
+
+<h3 align="center"> 接下来的目标：寻找 gls(13)例子</h3>
+</body>
+</html>
