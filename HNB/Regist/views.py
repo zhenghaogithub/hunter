@@ -61,12 +61,10 @@ def sign_in(request):
 			if user is not None:
 				if user.is_active:											#Make sure the account is activated
 					login(request,user)
-		                        #return render(request,'../templates/demo/sign_in.html',{'form':form})
 					#return redirect('MyRegister:main')
 					return redirect('Design:index')
 					#return redirect(direct)
                                         #return HttpResponseRedirect(direct)  
-                                        
 	                                #return render(request,direct)
 		
 				else:
@@ -88,10 +86,10 @@ def mainpage(request):
 	elif request.method =='POST':
 		if request.POST.get("logout"):
 			#return redirect('register_activate:logout')
-			return redirect('MyRegister:logout')
+			return redirect('Register:logout')
 		else:
 			#return redirect('register_activate:thankyou')
-			return redirect('MyRegister:thankyou')
+			return redirect('Register:thankyou')
 
 
 def log_out(request):

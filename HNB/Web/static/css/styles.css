@@ -204,7 +204,9 @@ small {
 }
 
 .navbar .navbar-brand {
-    background: url(/static/html/cohunter/content/images/logo.jpg) no-repeat left top !important;
+    /*
+    background: url(/static/images/1.jpg) no-repeat left top !important;
+    */
     margin: 0 1em;
     height: 45px;
 }

@@ -49,7 +49,10 @@
         function activateController(promises, controllerId) {
             return $q.all(promises).then(function (eventArgs) {
                 var data = { controllerId: controllerId };
+                console.log("debug in activet controlar ");
+                console.log(data);
                 $broadcast(commonConfig.config.controllerActivateSuccessEvent, data);
+                console.log(data);
             });
         }
 

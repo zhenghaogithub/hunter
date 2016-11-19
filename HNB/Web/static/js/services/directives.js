@@ -159,6 +159,9 @@
         }
     ]);
 
+
+/*
+
     app.directive('ccSpinner', ['$window', function ($window) {
         // Description:
         //  Creates a new Spinner and sets its options
@@ -181,7 +184,7 @@
             }, true);
         }
     }]);
-
+*/
     app.directive('ccWidgetHeader', function () {
         //Usage:
         //<div data-cc-widget-header title="vm.map.title"></div>

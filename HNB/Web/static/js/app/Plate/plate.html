@@ -1,6 +1,5 @@
-<section id="dashboard-view" class="mainbar">
+<div id="dashboard-view" class="mainbar"  data-ng-controller="robot as vm">
          <link rel="stylesheet" href="/static/css/robot.css">
-         <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
          <script>
             $('#account').bind('keyup', function(event) {
 		if (event.keyCode == "13") {
@@ -11,7 +10,6 @@
         </script>
         
 
-<div onload="document.body.scrollTo(0,document.body.scrollHeight)">
          <div class="chatContainer">
               <ul class="wei-chat" id=chatPanel>
 			<li><img src="/static/images/0.jpg" class="imgright">
@@ -54,11 +52,10 @@
 
   	 <div class="inputContainer">
 	      <input id="account" class="messageInput" placeholder="你想问机器人什么？" data-input-clear="2" type="text" name="a1">
-	      <input class="btnInput" value="发送" id="submit" data-ng-controller="robot" data-ng-click="sendMessage()" type="submit">
+	      <input class="btnInput" value="发送" id="submit" data-ng-click="sendMessage()" type="submit">
 <!--
 	      <input class="btnInput" value="发送" id="submit" data-ng-controller="robot" data-ng-click="sendMessage()" type="submit">
 -->
  	 </div>
-</div>
 
-</section>
+</div>

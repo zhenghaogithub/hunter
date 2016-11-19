@@ -2,8 +2,35 @@
     var MyApp = angular.module('app');
     var controllerId = "robot";
     MyApp.controller(controllerId,['$rootScope', '$http', '$scope', 'common','config','datacontext', robot])
-    function robot($scope)
+
+    function robot($rootScope, $http, $scope, common,config,datacontext)
     {
+         var getLogFn = common.logger.getLogFn;
+         var log = getLogFn(controllerId);
+
+         var vm = this;
+         vm.news = {
+            title: 'Marvel Plate',
+            description: 'Marvel Plate 2 is now in production!'
+         };
+         vm.cohunterApprovedCount = 0;
+         vm.cohunterApproveddata = [];
+         vm.title = 'Plate';
+         //add later
+         vm.user = "alex"
+         console.log(vm.user)
+
+         activate();
+
+         function activate() {
+            //var promises = [getOrderFormCount(), getPlateCast()];
+            //var promises = [getPlateData($http),getUser($http)];
+            var promises = [];
+            common.activateController(promises, controllerId)
+                .then(function () { log('Activated cohunterApprovedData View'); });
+         }
+
+
          $scope.sendMessage = function(){
 				var txt=document.getElementById("account").value;
 				writeMessage(txt);

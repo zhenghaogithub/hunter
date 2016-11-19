@@ -27,16 +27,13 @@
 
         activate();
 
-        
-
 
         function activate() {
             //why it can show in the html, it is defined in the common
             logSuccess('Grunt and Gulp with Angular loaded!', null, true);
-            //console.log('sucess in shell runing')
+            console.log('sucess in shell runing')
             common.activateController([], controllerId);
         }
-
         getUser($http);
         function getUser($http) {
             $http({method: 'GET', url: '/design/user/'}).
