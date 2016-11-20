@@ -26,6 +26,8 @@
 
          $scope.subset = function(){
              $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+
+             //window.location.reload(); 
              // send subset data
              $http({
                      method: 'POST',
@@ -38,33 +40,33 @@
                    }).success(function (data, status, headers, config) {
                        console.log(data);
                        var dataSet = data.blocks;
-/*
-                       var list =  [];
-                       list.push("title":"elem");
-                       list.push("title":"elem");
-*/
-                           
-                       $('#dataTables').DataTable({
-                          "destroy": true,//如果需要重新加载的时候请加上这个
+                       var title = data.title;
+                       var dataNew = {"destroy":true,"data":dataSet, "columns":title}
+                       if ($('#dataTables').hasClass('dataTable')) {
+　　                      dttable = $('#dataTables').dataTable();
+　　                      dttable.fnClearTable(); //清空一下table
+　　                      //dttable.fnAddData(title); //清空一下table
+                          dttable.fnDestroy(); //destroy datatables
+                          $('#dataTables').empty();
+                          $('#dataTables').DataTable({
+                          "destroy": true,
                           "data": dataSet,
-                          //"columns":list
-                          "columns": [
-                             { "title": "elem" },
-                             { "title": "elem" },
-                           ]
+                          "columns":title,
+                          });
 
-
-                          /*
-                          "columns": [
-                             { "title": "elem" },
-                             { "title": "elem" },
-                             { "title": "Platform" },
-                             { "title": "Version", "class": "center" },
-                             { "title": "Grade", "class": "center" }
-                           ]
-                          */
-                       });
-
+                          //$('#accountsDefaultList').dataTable().fnAddData(data);
+                          //$('#accountsDefaultList').dataTable().fnDraw();
+　　                      //dttable.fnDraw(); //清空一下table
+                       }
+                       else
+                       {
+                          //var lists =  [{"title":"elem"}, {"title":"elem"}];
+                          $('#dataTables').DataTable({
+                          "destroy": true,
+                          "data": dataSet,
+                          "columns":title,
+                          });
+                       }
                       // handle success things
                    }).error(function (data, status, headers, config) {
                        // handle error things
