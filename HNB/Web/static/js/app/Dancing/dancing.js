@@ -37,7 +37,34 @@
                      headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                    }).success(function (data, status, headers, config) {
                        console.log(data);
-                       $scope.dance.subset.blocks = data;
+                       var dataSet = data.blocks;
+/*
+                       var list =  [];
+                       list.push("title":"elem");
+                       list.push("title":"elem");
+*/
+                           
+                       $('#dataTables').DataTable({
+                          "destroy": true,//如果需要重新加载的时候请加上这个
+                          "data": dataSet,
+                          //"columns":list
+                          "columns": [
+                             { "title": "elem" },
+                             { "title": "elem" },
+                           ]
+
+
+                          /*
+                          "columns": [
+                             { "title": "elem" },
+                             { "title": "elem" },
+                             { "title": "Platform" },
+                             { "title": "Version", "class": "center" },
+                             { "title": "Grade", "class": "center" }
+                           ]
+                          */
+                       });
+
                       // handle success things
                    }).error(function (data, status, headers, config) {
                        // handle error things
